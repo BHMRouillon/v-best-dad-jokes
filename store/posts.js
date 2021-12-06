@@ -1,7 +1,7 @@
 export const state = () => ({
   id: 1,
   all: [
-    {
+    /*{
       id: 1,
       slug: "snowman",
       title: "Snowman",
@@ -82,6 +82,22 @@ export const state = () => ({
       title: "Santa",
       content:
         '"How much does it cost Santa to park his sleigh?" "Nothing, it\'s on the house."',
-    },
+    },*/
   ],
-});
+})
+
+export const actions = {
+  async getPosts({commit}){
+
+    const response = await this.$getAll("posts")
+
+    commit('setAll', response.items)
+    return response.items
+  }
+}
+
+export const mutations = {
+  setAll(state, all){
+    state.all = all
+  }
+};

@@ -23,6 +23,9 @@ export default {
   components: {
     Logo
   },
+  async asyncData({ store }) {
+    await store.dispatch('posts/getPosts')
+  },
   head() {
     return {
       title: "Welcome to DAD joke land",
