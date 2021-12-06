@@ -6,9 +6,9 @@
       <h2 class="subtitle">That Are So Bad And So Funny!</h2>
       <div class="links">
         <nuxt-link
-          :key="post.id"
+          :key="post.slug"
           v-for="post in posts"
-          :to="{name: 'posts-id', params: {id: post.id}}"
+          :to="{name: 'posts-slug', params: {id: post.slug}}"
           class="button--grey"
         >{{post.title}}</nuxt-link>
       </div>
@@ -18,13 +18,15 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
+import axios from 'axios';
 
 export default {
   components: {
     Logo
   },
-  async asyncData({ store }) {
-    await store.dispatch('posts/getPosts')
+    async asyncData({ store }) {
+    const response = await axios.get(`http://localhost:3001/posts`)
+    store.commit('posts/setAll',  response.data)
   },
   head() {
     return {
