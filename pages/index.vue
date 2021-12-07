@@ -8,7 +8,7 @@
         <nuxt-link
           :key="post.slug"
           v-for="post in posts"
-          :to="{name: 'posts-slug', params: {id: post.slug}}"
+          :to="{name: 'posts-slug', params: {slug: post.slug}}"
           class="button--grey"
         >{{post.title}}</nuxt-link>
       </div>

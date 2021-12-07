@@ -26,7 +26,7 @@ export default {
   },
   head() {
     return {
-      title: "The Post but the _id is replaced by slug",
+      title: this.post.title,
       meta: [
         {
         hid: this.post.id,
